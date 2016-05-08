@@ -24,9 +24,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+   //MARK:UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5;
+        return 20;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -36,8 +36,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         aCell = tableView.dequeueReusableCellWithIdentifier(myCellIdentifier);
        if aCell == nil{
             aCell = UITableViewCell(style: UITableViewCellStyle.Default , reuseIdentifier: myCellIdentifier);
-            aCell?.textLabel?.text = "haha";
+            aCell?.textLabel?.text = "\(indexPath.row)";
         }
+        
         return aCell ?? UITableViewCell();
     }
     
