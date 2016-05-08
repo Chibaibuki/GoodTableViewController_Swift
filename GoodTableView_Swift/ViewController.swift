@@ -32,15 +32,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let myCellIdentifier = "MyCellIdentifier";
-        
-        let aCell = UITableViewCell();
-        aCell.reuseIdentifier = myCellIdentifier;
-        
-        aCell.textLabel?.text = "Hello";
-        
-        
-        return aCell;
-        
+        var aCell:UITableViewCell?;
+        aCell = tableView.dequeueReusableCellWithIdentifier(myCellIdentifier);
+       if aCell == nil{
+            aCell = UITableViewCell(style: UITableViewCellStyle.Default , reuseIdentifier: myCellIdentifier);
+            aCell?.textLabel?.text = "haha";
+        }
+        return aCell ?? UITableViewCell();
     }
     
 }
