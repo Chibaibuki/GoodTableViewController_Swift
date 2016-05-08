@@ -8,10 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let aTableView = UITableView(frame:UIScreen.mainScreen().bounds);
+        aTableView.delegate = self;
+        aTableView.dataSource = self;
+        
+        self.view.addSubview(aTableView);
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -19,7 +24,24 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let myCellIdentifier = "MyCellIdentifier";
+        
+        let aCell = UITableViewCell();
+        aCell.reuseIdentifier = myCellIdentifier;
+        
+        aCell.textLabel?.text = "Hello";
+        
+        
+        return aCell;
+        
+    }
+    
 }
 
