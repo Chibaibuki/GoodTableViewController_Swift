@@ -36,11 +36,14 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         aCell = tableView.dequeueReusableCellWithIdentifier(myCellIdentifier);
        if aCell == nil{
             aCell = UITableViewCell(style: UITableViewCellStyle.Default , reuseIdentifier: myCellIdentifier);
-            aCell?.textLabel?.text = "\(indexPath.row)";
         }
         
+            aCell?.textLabel?.text = "\(indexPath.row)";
         return aCell ?? UITableViewCell();
     }
-    
+   //MARK:UITableViewDelegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("\(indexPath.row)has been selected");
+    }
 }
 
